@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/movieLoginFragment">
+
+    <fragment
+        android:id="@+id/movieListFragment"
+        android:name="com.dino.ander.movieapp.ui.feature.movies.MovieListFragment"
+        android:label="fragment_movie_list"
+        tools:layout="@layout/fragment_movie_list" >
+        <action
+            android:id="@+id/action_movieListFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.dino.ander.movieapp.ui.feature.movieDetail.MovieDetailFragment"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail" >
+        <action
+            android:id="@+id/action_movieDetailFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment" />
+        <argument
+            android:name="moviedata"
+            app:argType="com.dino.ander.movieapp.domain.model.Movie" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieLoginFragment"
+        android:name="com.dino.ander.movieapp.ui.feature.login.MovieLoginFragment"
+        android:label="fragment_movie_login"
+        tools:layout="@layout/fragment_movie_login" >
+        <action
+            app:popUpTo="@id/movieLoginFragment"
+            app:popUpToInclusive="true"
+            android:id="@+id/action_movieLoginFragment_to_movieListFragment"
+            app:destination="@id/movieListFragment" />
+    </fragment>
+</navigation>
