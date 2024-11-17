@@ -10,6 +10,5 @@ interface MovieRepository {
 
     fun getPagedMovies(): Flow<PagingData<MovieEntity>>
     fun getMovieDetailFlow(movieId: Int): Flow<Result<MovieDetails?>>
-
     fun loginFlow(user: String, pass: String): Flow<Result<Boolean>>
 }

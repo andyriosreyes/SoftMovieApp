@@ -25,11 +25,11 @@ class MovieLoginViewModel @Inject constructor(
 
     fun login(user: String, pass: String) {
         viewModelScope.launch {
-            getLoginUseCase.execute(user, pass).flowOn(Dispatchers.IO).collect { result ->
+            getLoginUseCase.execute(user, pass).collect { result ->
                 _loginFlow.update {
                     when (result) {
                         is Result.Loading -> UIStateLogin.Loading
-                        is Result.Success -> UIStateLogin.Success(result.data!!)
+                        is Result.Success -> UIStateLogin.Success(result.data)
                         is Result.Error -> UIStateLogin.Error(R.string.login_error)
                     }
                 }

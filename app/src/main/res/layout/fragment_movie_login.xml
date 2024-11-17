@@ -21,7 +21,7 @@
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="@dimen/_200dp"
             android:src="@mipmap/ic_launcher"
-            app:strokeWidth="@dimen/_10dp"
+            app:strokeWidth="@dimen/_0dp"
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:padding="@dimen/_5dp"

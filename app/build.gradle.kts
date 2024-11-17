@@ -20,6 +20,7 @@ android {
         multiDexEnabled = true
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.dino.ander.movieapp.CustomTestRunner"
     }
 
     buildTypes {
@@ -68,12 +69,19 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
+
 
     kapt {
         correctErrorTypes = true
@@ -95,6 +103,7 @@ dependencies {
 
     //inyeccion de dependencia
     implementation(libs.hilt)
+    implementation(libs.androidx.runner)
     kapt(libs.hilt.compiler)
     //refresh
     implementation(libs.androidx.swiperefreshlayout)
@@ -123,8 +132,13 @@ dependencies {
     implementation(libs.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
 
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.0.0")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1")
+    // For local unit tests
+    testImplementation("org.robolectric:robolectric:4.13")
+    testImplementation("com.google.dagger:hilt-android-testing:2.52")
+    kaptTest("com.google.dagger:hilt-compiler:2.52")
 }

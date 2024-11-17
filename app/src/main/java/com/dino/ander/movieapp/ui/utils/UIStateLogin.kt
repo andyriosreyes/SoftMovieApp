@@ -6,7 +6,7 @@ sealed class UIStateLogin {
     data object Empty : UIStateLogin()
 
     data class Success(
-        val data: Boolean
+        val data: Boolean?
     ) : UIStateLogin()
 
     data class Error(

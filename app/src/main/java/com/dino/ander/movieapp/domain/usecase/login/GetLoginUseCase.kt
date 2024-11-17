@@ -9,7 +9,6 @@ import javax.inject.Inject
 class GetLoginUseCase @Inject constructor(
     private val movieRepository: MovieRepository,
 ){
-
     fun execute(user: String, pass: String): Flow<Result<Boolean>> {
         return movieRepository.loginFlow(user,pass).mapNotNull { response ->
             val result = response.data

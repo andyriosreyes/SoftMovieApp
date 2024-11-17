@@ -57,8 +57,7 @@ class MovieRepositoryImp @Inject constructor(
         return flow {
             emit(Result.Loading())
             kotlinx.coroutines.delay(800)
-            //val result = (user == "Admin" && pass == "Password*123.")
-            val result = (user == "1" && pass == "1")
+            val result = (user == "Admin" && pass == "Password*123.")
             if (result) {
                 emit(Result.Success(true))
             } else {
